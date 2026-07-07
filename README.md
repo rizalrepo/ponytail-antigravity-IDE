@@ -1,29 +1,38 @@
 # Ponytail Skills for Gemini / Antigravity
 
-Kumpulan custom skills untuk AI Coding Assistant (Gemini/Antigravity) yang berfokus pada kesederhanaan, efisiensi tinggi, dan penghapusan kode yang tidak perlu (YAGNI).
+A collection of custom skills for the Gemini/Antigravity AI Coding Assistant focusing on extreme simplicity, efficiency, and eliminating unnecessary code (YAGNI).
 
-Skill-skill ini disesuaikan (customized) dengan preferensi mode **ultra** secara default.
+These skills are pre-configured to run in **ultra** mode by default.
 
-## Daftar Skill yang Tersedia
+## Available Skills
 
-1. **`ponytail`**: Memaksa solusi paling sederhana, paling pendek, dan paling minimalis (mengutamakan standard library & native features).
-2. **`ponytail-review`**: Melakukan review kode khusus untuk mendeteksi over-engineering dan kode mubazir.
-3. **`ponytail-audit`**: Memindai seluruh repositori untuk mencari pola over-engineering.
-4. **`ponytail-debt`**: Mengumpulkan semua catatan komentar `ponytail:` di codebase ke dalam sebuah file ledger.
-5. **`ponytail-gain`**: Menampilkan metrik estimasi penghematan kode dan waktu yang dihasilkan oleh Ponytail.
-6. **`ponytail-help`**: Panduan cepat referensi perintah-perintah Ponytail.
-7. **`ponytail-update`**: Memperbarui skill Ponytail Anda langsung dari repositori ini ke versi terbaru.
+1. **`ponytail`**: Forces the simplest, shortest, and most minimal solution (prioritizes the standard library & native platform features).
+2. **`ponytail-review`**: Code review focused exclusively on detecting over-engineering and code bloat.
+3. **`ponytail-audit`**: Whole-repository audit to scan for over-engineering.
+4. **`ponytail-debt`**: Harvests every `ponytail:` comment in the codebase into a unified debt ledger.
+5. **`ponytail-gain`**: Displays an scoreboard of estimated code and time savings.
+6. **`ponytail-help`**: Quick-reference card for all ponytail commands.
+7. **`ponytail-update`**: Updates your ponytail skills to the latest versions directly from this repository.
 
 ---
 
-## Cara Instalasi Cepat (Satu Baris Perintah)
+## Quick Installation
 
+### Windows (PowerShell)
+To install all skills automatically on Windows, open **PowerShell** and run the following command:
 ```powershell
-irm https://raw.githubusercontent.com/rizalrepo/ponytail/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/rizalrepo/ponytail-antigravity-IDE/main/install.ps1 | iex
 ```
-Catatan: Pastikan Gemini/Antigravity IDE ditutup terlebih dahulu sebelum menginstal agar konfigurasi baru dimuat dengan sempurna saat dibuka kembali.
+*Note: Make sure to close your Gemini/Antigravity IDE before running the installer so the new configurations are loaded correctly when reopened.*
+
+### macOS / Linux (Terminal)
+To install all skills automatically on macOS or Linux, open your **Terminal** and run the following command:
+```bash
+curl -fsSL https://raw.githubusercontent.com/rizalrepo/ponytail-antigravity-IDE/main/install.sh | bash
+```
+*Note: Make sure to close your Gemini/Antigravity IDE before running the installer so the new configurations are loaded correctly when reopened.*
 
 ---
 
-## Lisensi
-[MIT License](LICENSE)
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.

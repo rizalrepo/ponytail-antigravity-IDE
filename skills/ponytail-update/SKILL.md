@@ -14,12 +14,12 @@ When this skill is triggered, you must perform the following steps to dynamicall
 1. **Dynamically List All Skills on GitHub**:
    Query the GitHub API to list the folders inside the `skills/` directory of the `ponytail` repository. 
    - You can execute a command like:
-     `powershell -Command "Invoke-RestMethod -Uri 'https://api.github.com/repos/rizalrepo/ponytail/contents/skills' -Headers @{'User-Agent' = 'Mozilla/5.0'} | Select-Object name"`
+     `powershell -Command "Invoke-RestMethod -Uri 'https://api.github.com/repos/rizalrepo/ponytail-antigravity-IDE/contents/skills' -Headers @{'User-Agent' = 'Mozilla/5.0'} | Select-Object name"`
    - Parse this output to get the name of all directories (e.g., `ponytail`, `ponytail-review`, `ponytail-audit`, `ponytail-debt`, `ponytail-gain`, `ponytail-help`, and any future additions).
 
 2. **Download Each Skill's SKILL.md**:
    For each skill name found in step 1, download its latest `SKILL.md` file from:
-   `https://raw.githubusercontent.com/rizalrepo/ponytail/main/skills/{skill_name}/SKILL.md`
+   `https://raw.githubusercontent.com/rizalrepo/ponytail-antigravity-IDE/main/skills/{skill_name}/SKILL.md`
 
 3. **Re-apply Custom "Ultra by Default" Settings**:
    If the skill name is `ponytail`, modify the downloaded `SKILL.md` file contents to preserve the user's global "ultra default" settings:
