@@ -1,38 +1,119 @@
-# Ponytail Skills for Gemini / Antigravity
+# Ponytail for Antigravity IDE
 
-A collection of custom skills for the Gemini/Antigravity AI Coding Assistant focusing on extreme simplicity, efficiency, and eliminating unnecessary code (YAGNI).
+Focused fork of `DietrichGebert/ponytail` for Antigravity IDE.
+This extension brings Ponytail's lazy-senior-dev ruleset into Antigravity IDE,
+defaults it to **ultra**, and adds slash-first Ponytail commands plus the
+bundled Ponytail prompt skills.
 
-These skills are pre-configured to run in **ultra** mode by default.
+## What This Fork Includes
 
-## Available Skills
+- `package.json` + `extension.js` so Antigravity IDE can load Ponytail as an editor extension.
+- Slash commands for Antigravity IDE prompt files and Ponytail runtime controls.
+- `skills/` for Ponytail prompt cards and specialized prompts.
+- Install scripts that copy the skills into `Antigravity IDE/User/prompts`.
 
-1. **`ponytail`**: Forces the simplest, shortest, and most minimal solution (prioritizes the standard library & native platform features).
-2. **`ponytail-review`**: Code review focused exclusively on detecting over-engineering and code bloat.
-3. **`ponytail-audit`**: Whole-repository audit to scan for over-engineering.
-4. **`ponytail-debt`**: Harvests every `ponytail:` comment in the codebase into a unified debt ledger.
-5. **`ponytail-gain`**: Displays an scoreboard of estimated code and time savings.
-6. **`ponytail-help`**: Quick-reference card for all ponytail commands.
-7. **`ponytail-update`**: Updates your ponytail skills to the latest versions directly from original ponytail repository.
+## Recommended Installation
 
----
+### Antigravity IDE Extension
 
-## Quick Installation
+Install Ponytail as a normal Antigravity IDE extension.
+
+Option 1: from a VSIX release asset.
+
+Option 2: build a VSIX from this repository, then in Antigravity IDE open the
+Extensions view and choose `...` → `Install from VSIX...`.
+
+Once installed, the extension syncs the bundled Ponytail skills into the IDE's
+prompt profile, shows the active Ponytail mode in the status bar, and gives you
+these commands in the Command Palette:
+
+- `Ponytail: Sync Skills`
+- `Ponytail: Update Skills`
+- `Ponytail: Set Session Mode`
+- `Ponytail: Set Default Mode`
+- `Ponytail: Show Current Status`
+- `Ponytail: Open Help`
+- `Ponytail: Open Antigravity Prompts Folder`
+
+## Chat Usage
+
+Antigravity IDE uses slash commands here, not `@` mentions.
+
+Examples:
+
+- `/ponytail`
+- `/ponytail-help`
+- `/ponytail-review`
+- `/ponytail-audit`
+- `/ponytail-debt`
+- `/ponytail-gain`
+- `/ponytail-update`
+
+Runtime commands exposed by the extension itself:
+
+- `/ponytailMode ultra`
+- `/ponytailMode full`
+- `/ponytailMode off`
+- `/ponytailStatus`
+- `/ponytailDefault ultra`
+- `/ponytailSync`
+
+The session mode is temporary and resets when Antigravity IDE starts a new
+session. The persistent default mode is controlled by the `ponytail.defaultMode`
+setting or the `/ponytailDefault` runtime command.
+
+## Manual Fallback: Install Raw Skills Only
+
+Use this only if you want the `SKILL.md` files copied into the Antigravity IDE
+prompt profile without packaging the editor extension.
+
+The target folder is:
+
+- Windows: `%APPDATA%\Antigravity IDE\User\prompts`
+- macOS/Linux: `$XDG_CONFIG_HOME/Antigravity IDE/User/prompts` or `~/.config/Antigravity IDE/User/prompts`
 
 ### Windows (PowerShell)
-To install all skills automatically on Windows, open **PowerShell** and run the following command:
+
 ```powershell
 irm https://raw.githubusercontent.com/rizalrepo/ponytail-antigravity-IDE/main/install.ps1 | iex
 ```
-*Note: Make sure to close your Gemini/Antigravity IDE before running the installer so the new configurations are loaded correctly when reopened.*
 
 ### macOS / Linux (Terminal)
-To install all skills automatically on macOS or Linux, open your **Terminal** and run the following command:
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/rizalrepo/ponytail-antigravity-IDE/main/install.sh | bash
 ```
-*Note: Make sure to close your Gemini/Antigravity IDE before running the installer so the new configurations are loaded correctly when reopened.*
 
----
+The installers resolve the repository's default branch dynamically before
+downloading the skill files.
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## What It Is For
+
+Ponytail is for making Antigravity IDE behave like a lazy senior developer:
+
+- prefer deletion over addition
+- reuse what the codebase already has
+- choose stdlib or native platform features before dependencies
+- keep answers and diffs small unless the task really needs more
+
+In practice, this extension's job is now two things:
+
+- keep the Ponytail prompt files synchronized inside Antigravity IDE
+- provide IDE-native slash runtime controls for session mode, default mode,
+  status, and prompt synchronization
+
+## Available Skills
+
+1. **`ponytail`**: Forces the simplest, shortest, and most minimal solution.
+2. **`ponytail-review`**: Review focused on over-engineering and code bloat.
+3. **`ponytail-audit`**: Whole-repository audit for code that should be deleted or simplified.
+4. **`ponytail-debt`**: Harvests every `ponytail:` shortcut comment into a debt ledger.
+5. **`ponytail-gain`**: Scoreboard of estimated code, cost, and time savings.
+6. **`ponytail-help`**: Quick-reference card for commands and modes.
+7. **`ponytail-update`**: Refreshes locally installed skills from this repository.
+
+## Scope
+
+This fork is intentionally Antigravity IDE-only. It does not target Gemini,
+Antigravity CLI, Claude, Codex, Copilot CLI, Hermes, or the rest of the
+upstream host matrix.
