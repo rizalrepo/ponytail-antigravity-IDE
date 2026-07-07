@@ -18,13 +18,10 @@ Skill-skill ini disesuaikan (customized) dengan preferensi mode **ultra** secara
 
 ## Cara Instalasi Cepat (Satu Baris Perintah)
 
-Teman Anda dapat langsung memasang semua skill ini ke sistem mereka dengan menyalin perintah berikut dan menjalankannya di **PowerShell**:
-
 ```powershell
 irm https://raw.githubusercontent.com/rizalrepo/ponytail/main/install.ps1 | iex
 ```
-
-*Catatan: Pastikan Gemini/Antigravity IDE ditutup terlebih dahulu sebelum menginstal agar konfigurasi baru dimuat dengan sempurna saat dibuka kembali.*
+Catatan: Pastikan Gemini/Antigravity IDE ditutup terlebih dahulu sebelum menginstal agar konfigurasi baru dimuat dengan sempurna saat dibuka kembali.
 
 ---
 
