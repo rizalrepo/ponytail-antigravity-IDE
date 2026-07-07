@@ -13,3 +13,6 @@ $RECYCLE.BIN/
 *.njsproj
 *.sln
 *.swp
+
+# Local build artifacts
+*.vsix

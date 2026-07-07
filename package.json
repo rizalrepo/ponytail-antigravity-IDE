@@ -1,0 +1,135 @@
+{
+  "name": "ponytail-antigravity-ide",
+  "displayName": "Ponytail for Antigravity IDE",
+  "description": "Adds Ponytail skills and commands to Antigravity IDE, with ultra mode as the default.",
+  "version": "4.8.4-antigravity.1",
+  "publisher": "rizalrepo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rizalrepo/ponytail-antigravity-IDE.git"
+  },
+  "homepage": "https://github.com/rizalrepo/ponytail-antigravity-IDE",
+  "bugs": {
+    "url": "https://github.com/rizalrepo/ponytail-antigravity-IDE/issues"
+  },
+  "files": [
+    "AGENTS.md",
+    "README.md",
+    "extension.js",
+    "install.ps1",
+    "install.sh",
+    "package.json",
+    "ponytail-core.js",
+    "skills/"
+  ],
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "Ponytail",
+      "properties": {
+        "ponytail.defaultMode": {
+          "type": "string",
+          "enum": [
+            "off",
+            "lite",
+            "full",
+            "ultra"
+          ],
+          "default": "ultra",
+          "description": "Default Ponytail mode used when Antigravity IDE starts a new session."
+        },
+        "ponytail.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the current Ponytail session mode in the status bar."
+        }
+      }
+    },
+    "chatParticipants": [
+      {
+        "id": "rizalrepo.ponytail",
+        "name": "ponytail",
+        "fullName": "Ponytail",
+        "description": "Use Ponytail slash commands or ask for a minimal, anti-over-engineering solution",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "ponytailMode",
+            "description": "Change the Ponytail session mode"
+          },
+          {
+            "name": "ponytailStatus",
+            "description": "Show current Ponytail session and default modes"
+          },
+          {
+            "name": "ponytailDefault",
+            "description": "Set the default Ponytail mode for future IDE sessions"
+          },
+          {
+            "name": "ponytailSync",
+            "description": "Sync the bundled Ponytail prompt files into Antigravity IDE"
+          }
+        ],
+        "disambiguation": [
+          {
+            "category": "ponytail",
+            "description": "The user wants a minimal, anti-over-engineering solution, wants to switch Ponytail mode, or asks for a lazy senior developer style answer.",
+            "examples": [
+              "be lazy and simplify this fix",
+              "give me the shortest path that actually works",
+              "switch Ponytail to ultra mode",
+              "review this for over-engineering only"
+            ]
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "ponytail.syncSkills",
+        "title": "Ponytail: Sync Skills"
+      },
+      {
+        "command": "ponytail.setSessionMode",
+        "title": "Ponytail: Set Session Mode"
+      },
+      {
+        "command": "ponytail.setDefaultMode",
+        "title": "Ponytail: Set Default Mode"
+      },
+      {
+        "command": "ponytail.runSlashRuntimeHelp",
+        "title": "Ponytail: Show Slash Command Guide"
+      },
+      {
+        "command": "ponytail.showStatus",
+        "title": "Ponytail: Show Current Status"
+      },
+      {
+        "command": "ponytail.updateSkills",
+        "title": "Ponytail: Update Skills"
+      },
+      {
+        "command": "ponytail.openHelp",
+        "title": "Ponytail: Open Help"
+      },
+      {
+        "command": "ponytail.openPromptsFolder",
+        "title": "Ponytail: Open Antigravity Prompts Folder"
+      }
+    ]
+  }
+}
