@@ -12,7 +12,7 @@ These skills are pre-configured to run in **ultra** mode by default.
 4. **`ponytail-debt`**: Harvests every `ponytail:` comment in the codebase into a unified debt ledger.
 5. **`ponytail-gain`**: Displays an scoreboard of estimated code and time savings.
 6. **`ponytail-help`**: Quick-reference card for all ponytail commands.
-7. **`ponytail-update`**: Updates your ponytail skills to the latest versions directly from this repository.
+7. **`ponytail-update`**: Updates your ponytail skills to the latest versions directly from original ponytail repository.
 
 ---
 
