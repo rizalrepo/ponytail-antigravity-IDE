@@ -35,9 +35,9 @@ When this skill is triggered, perform the following steps:
 
 5. **Write to portable user paths**
 
-- Primary install target:
-  - Windows: `$env:APPDATA\Antigravity IDE\User\prompts\{skill_name}\SKILL.md`
-  - macOS/Linux: `${XDG_CONFIG_HOME:-$HOME/.config}/Antigravity IDE/User/prompts/{skill_name}/SKILL.md`
+- Primary install target (Antigravity global skills location):
+  - Windows: `$env:USERPROFILE\.gemini\config\skills\{skill_name}\SKILL.md`
+  - macOS/Linux: `$HOME/.gemini/config/skills/{skill_name}/SKILL.md`
 
 6. **Create missing directories**
 
@@ -45,4 +45,4 @@ When this skill is triggered, perform the following steps:
 
 7. **Print a short summary**
 
-- Report the resolved default branch and the updated Antigravity IDE prompt commands.
+- Report the resolved default branch and the updated Ponytail skills (now exposed as slash commands).

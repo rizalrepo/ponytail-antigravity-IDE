@@ -1,4 +1,4 @@
-﻿---
+---
 name: ponytail-audit
 description: >
   Whole-repo audit for over-engineering. Like ponytail-review, but scans the

@@ -47,15 +47,9 @@ function getSkillNames(repoRoot) {
 }
 
 function getTargetRoots() {
-  const appData = process.env.APPDATA;
-
-  if (appData) {
-    return [path.join(appData, "Antigravity IDE", "User", "prompts")];
-  }
-
-  const configHome =
-    process.env.XDG_CONFIG_HOME || path.join(os.homedir(), ".config");
-  return [path.join(configHome, "Antigravity IDE", "User", "prompts")];
+  // Antigravity discovers global skills (and exposes them as slash commands)
+  // from ~/.gemini/config/skills on every platform (os.homedir() == %USERPROFILE% on Windows).
+  return [path.join(os.homedir(), ".gemini", "config", "skills")];
 }
 
 async function syncSkills() {
@@ -506,17 +500,10 @@ async function openHelp() {
   await vscode.window.showTextDocument(document, { preview: false });
 }
 
-async function openPromptsFolder() {
-  const appData = process.env.APPDATA;
-
-  if (!appData) {
-    vscode.window.showWarningMessage("APPDATA is not set on this machine.");
-    return;
-  }
-
-  const promptsRoot = path.join(appData, "Antigravity IDE", "User", "prompts");
-  await fsp.mkdir(promptsRoot, { recursive: true });
-  const uri = vscode.Uri.file(promptsRoot);
+async function openSkillsFolder() {
+  const skillsRoot = path.join(os.homedir(), ".gemini", "config", "skills");
+  await fsp.mkdir(skillsRoot, { recursive: true });
+  const uri = vscode.Uri.file(skillsRoot);
   await vscode.commands.executeCommand("revealFileInOS", uri);
 }
 
@@ -640,7 +627,7 @@ async function activate(context) {
   context.subscriptions.push(
     vscode.commands.registerCommand(
       "ponytail.openPromptsFolder",
-      openPromptsFolder,
+      openSkillsFolder,
     ),
   );
 }
