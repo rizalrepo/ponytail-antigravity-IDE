@@ -1,4 +1,4 @@
-﻿---
+---
 name: ponytail-review
 description: >
   Code review focused exclusively on over-engineering. Finds what to delete:

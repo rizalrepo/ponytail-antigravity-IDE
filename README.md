@@ -10,7 +10,7 @@ bundled Ponytail prompt skills.
 - `package.json` + `extension.js` so Antigravity IDE can load Ponytail as an editor extension.
 - Slash commands for Antigravity IDE prompt files and Ponytail runtime controls.
 - `skills/` for Ponytail prompt cards and specialized prompts.
-- Install scripts that copy the skills into `Antigravity IDE/User/prompts`.
+- Install scripts that copy the skills into `~/.gemini/config/skills` (Antigravity's global skills location).
 
 ## Recommended Installation
 
@@ -23,8 +23,8 @@ Option 1: from a VSIX release asset.
 Option 2: build a VSIX from this repository, then in Antigravity IDE open the
 Extensions view and choose `...` → `Install from VSIX...`.
 
-Once installed, the extension syncs the bundled Ponytail skills into the IDE's
-prompt profile, shows the active Ponytail mode in the status bar, and gives you
+Once installed, the extension syncs the bundled Ponytail skills into Antigravity's
+global skills folder (`~/.gemini/config/skills`), shows the active Ponytail mode in the status bar, and gives you
 these commands in the Command Palette:
 
 - `Ponytail: Sync Skills`
@@ -64,13 +64,14 @@ setting or the `/ponytailDefault` runtime command.
 
 ## Manual Fallback: Install Raw Skills Only
 
-Use this only if you want the `SKILL.md` files copied into the Antigravity IDE
-prompt profile without packaging the editor extension.
+Use this only if you want the `SKILL.md` files copied into Antigravity's global
+skills folder without packaging the editor extension. Skills placed here are
+discovered automatically and exposed as slash commands (e.g. `/ponytail`).
 
-The target folder is:
+The target folder is Antigravity's global skills location:
 
-- Windows: `%APPDATA%\Antigravity IDE\User\prompts`
-- macOS/Linux: `$XDG_CONFIG_HOME/Antigravity IDE/User/prompts` or `~/.config/Antigravity IDE/User/prompts`
+- Windows: `%USERPROFILE%\.gemini\config\skills`
+- macOS/Linux: `~/.gemini/config/skills`
 
 ### Windows (PowerShell)
 

@@ -13,11 +13,8 @@ $fallbackSkills = @(
     "ponytail-update"
 )
 
-if (-not $env:APPDATA) {
-    throw "APPDATA is not set. Antigravity IDE prompt folder could not be resolved."
-}
-
-$baseDir = Join-Path $env:APPDATA "Antigravity IDE\User\prompts"
+# Antigravity discovers global skills from %USERPROFILE%\.gemini\config\skills.
+$baseDir = Join-Path $env:USERPROFILE ".gemini\config\skills"
 $localSkillsRoot = Join-Path $PSScriptRoot "skills"
 
 try {
@@ -43,7 +40,7 @@ try {
 }
 
 Write-Host "=== Starting Ponytail Skills Installation ===" -ForegroundColor Cyan
-Write-Host "Target prompt directory: $baseDir" -ForegroundColor Gray
+Write-Host "Target skills directory: $baseDir" -ForegroundColor Gray
 Write-Host "Source branch: $branch" -ForegroundColor Gray
 
 if (-not (Test-Path $baseDir)) {

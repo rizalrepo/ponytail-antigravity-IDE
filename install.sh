@@ -18,8 +18,8 @@ FALLBACK_SKILLS=(
 )
 
 REPO_API="https://api.github.com/repos/$REPO_OWNER/$REPO_NAME"
-CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-BASE_DIR="$CONFIG_HOME/Antigravity IDE/User/prompts"
+# Antigravity discovers global skills from ~/.gemini/config/skills on every OS.
+BASE_DIR="$HOME/.gemini/config/skills"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOCAL_SKILLS_ROOT="$SCRIPT_DIR/skills"
 
@@ -34,7 +34,7 @@ fi
 
 mapfile -t SKILLS < <({
     curl -fsSL -H "User-Agent: $USER_AGENT" "$REPO_API/contents/skills?ref=$BRANCH" 2>/dev/null || true
-} | sed -n 's/.*"name":[[:space:]]*"\([^"]*\)".*/\1/p')
+} | grep -oE '"name":[[:space:]]*"[^"]*"' | sed 's/.*"name":[[:space:]]*"//; s/"$//')
 
 if [ "${#SKILLS[@]}" -eq 0 ]; then
     SKILLS=("${FALLBACK_SKILLS[@]}")
@@ -42,7 +42,7 @@ if [ "${#SKILLS[@]}" -eq 0 ]; then
 fi
 
 echo "=== Starting Ponytail Skills Installation ==="
-echo "Target prompt directory: $BASE_DIR"
+echo "Target skills directory: $BASE_DIR"
 echo "Source branch: $BRANCH"
 
 if [ ! -d "$BASE_DIR" ]; then

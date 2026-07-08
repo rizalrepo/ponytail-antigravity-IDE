@@ -16,3 +16,9 @@ $RECYCLE.BIN/
 
 # Local build artifacts
 *.vsix
+
+# Dependencies
+node_modules/
+
+# Tests (local-only, not published)
+tests/
